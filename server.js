@@ -4,17 +4,21 @@ import bodyParser from "body-parser"
 const app = express()
 const port = 4000
 
-const credentials = {
-    username: "riyanshverma01",
-    password: "password",
-}
+const username = "riyanshverma01"
+const password = "password"
 
-app.get("/confirmation", (req, res)=>{
-    if(req.body.username === credentials.username && req.body.password === credentials.password){
-        res.status(200).send("Login successful")
-    }
-    else{
-        res.status(401).send("Invalid username or password")
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post("/confirmation", (req, res)=>{
+    console.log(req.body.password)
+    if(req.body.username == username && req.body.password == password){
+        console.log("The user is valid!")
+        res.status(200).json({ message: "The user is ready to see the weather!!" })
+    }else{
+        console.log("Invalid user credentials!")
+        res.status(401).json({ message: "Invalid username or password" })
     }
 })
 
