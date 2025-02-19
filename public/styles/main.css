@@ -1,0 +1,11 @@
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 
+      'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .shadow-lg {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  }
