@@ -39,23 +39,61 @@
             </div>
         </section>
         <section>
-            <div class="my-5 container col-9" id="uv-index-details">
-                <% if (!locals.data) { %>
+            <div class="my-5 container" id="uv-index-details">
+                <% if (!locals.uvData && !locals.sunData) { %>
                     <h1 class="text-center">No Data to show!!</h1>
                 <% } else { %>
-                    <div class="d-flex align-items-center justify-content-center p-4" style="background: linear-gradient(to bottom, #38bdf8, #0ea5e9);">
-                        <div class="bg-primary rounded-3 p-4 shadow-lg" style="max-width: 400px; width: 100%;">
-                            <div class="d-flex align-items-center gap-2 mb-4">
-                                <!-- <i class="bi bi-brightness-high"></i> -->
-                                <h1 class="text-white text-2xl font-light">UV INDEX</h1>
+                    <div class="row justify-content-center">
+                        <div class="col-md-6 mb-4">
+                            <div class="d-flex align-items-center justify-content-center p-4 rounded-5 uv-index-container">
+                                <div class="bg-primary rounded-3 p-4 shadow-lg uv-index-box">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <i class="bi bi-brightness-high uv-icon"></i>
+                                        <h1 class="text-white text-2xl font-light text-opacity-50">UV INDEX</h1>
+                                    </div>
+                                    <div class="text-white">
+                                        <div class="display-2 font-light mb-0 d-flex align-items-baseline">
+                                            <span><%= locals.uvData.uvIndex %></span>
+                                            <sub class="ms-1" style="position: relative; top: -2px; font-size: 10px;"><%= locals.uvData.uvTime %></sub>
+                                        </div>
+                                        <div class="h3" style="background: linear-gradient(to right, <%= locals.uvData.gradientString %>); -webkit-background-clip: text; color: transparent;">
+                                            <%= locals.uvData.uvWarning %>
+                                        </div>
+                                        <p class="fs-4 font-light"><%= locals.uvData.warningMessage %></p>
+                                        <div class="">
+                                            <h2 class="text-white">Max UV Index for the Day: 
+                                                <span style="background: linear-gradient(to right, <%= locals.uvData.maxGradientString %>); -webkit-background-clip: text; color: transparent;">
+                                                    <%= locals.uvData.uvIndexMax %>
+                                                </span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="text-white">
-                                <div class="display-1 font-light mb-2"><%= data.result.uv %></div>
-                                <div class="h2 mb-4">Moderate</div>
-                                <!-- <div class="position-relative h-2 bg-gradient rounded-pill mb-4" style="background: linear-gradient(to right, #22c55e, #facc15, #ef4444);">
-                                    <div class="position-absolute bg-white rounded-circle shadow" style="left: 40%; top: 50%; transform: translate(-50%, -50%); width: 16px; height: 16px;"></div>
-                                </div> -->
-                                <p class="h3 font-light">Use sun protection until 4PM.</p>
+                        </div>
+
+                        <div class="col-md-6 mb-4">
+                            <div class="d-flex align-items-center justify-content-center p-4 rounded-5 uv-index-container">
+                                <div class="bg-primary rounded-3 p-4 shadow-lg uv-index-box">
+                                    <div class="d-flex align-items-center gap-2 mb-4">
+                                        <i class="bi bi-brightness-high uv-icon"></i>
+                                        <h1 class="text-white text-2xl font-light">UV INDEX</h1>
+                                    </div>
+                                    <div class="text-white">
+                                        <div class="display-1 font-light mb-2"><%= locals.uvData.uvIndex %></div>
+                                        <div class="h2 mb-4" style="background: linear-gradient(to right, <%= locals.uvData.gradientString %>); -webkit-background-clip: text; color: transparent;">
+                                            <%= locals.uvData.uvWarning %>
+                                        </div>
+                                        <p class="h3 font-light"><%= locals.uvData.warningMessage %></p>
+                                        <div class="mt-4">
+                                            <h2 class="text-white">Max UV Index for the Day: 
+                                                <span style="background: linear-gradient(to right, <%= locals.uvData.maxGradientString %>); -webkit-background-clip: text; color: transparent;">
+                                                    <%= locals.uvData.uvIndexMax %>
+                                                </span>
+                                            </h2>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
